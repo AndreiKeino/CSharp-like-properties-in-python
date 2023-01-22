@@ -137,7 +137,6 @@ def cprop(klass: Type, arg_1=5): # Class c-Sharp - like decorator of PRoperty Vo
         if p.set_f_func:
             prop_funcs.append(p.set_f_func)
             func_name = p.prop_name + '_' + p.set_f_name
-            check_name(func_name)
             set_attrib(func_name, p.set_f_func)
 
             if p.del_f_func:
