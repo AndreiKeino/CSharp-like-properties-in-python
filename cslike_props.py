@@ -70,7 +70,6 @@ def _del_cprop_attr(self: Type, attrs: List[str]):
     klass = type(self)
 
     for a in attrs:
-        # print('a = ', a)
         delattr(klass, a)
         d = dir(self)
         if a in d:
