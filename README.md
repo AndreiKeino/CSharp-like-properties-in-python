@@ -1,5 +1,5 @@
 # CSharp-like-properties-in-python.  
-Properties in python that looks a bit like C# ones.\
+### Properties in python that looks a bit like C# ones   
 ##### functions get_all_nested and free_var are borrowed from repository at https://github.com/sansyrox/nestd  
 ##### with many thanks to sansyrox 
    
