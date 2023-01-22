@@ -120,6 +120,7 @@ def cprop(klass: Type, arg_1=5): # Class c-Sharp - like decorator of PRoperty Vo
         if attribute_name in existing_keys:
             raise AttributeError(f'attribute {attribute_name} already exists')
 
+    delchecked: bool = False
     for p in props:
         attr_names = []
 
@@ -153,7 +154,11 @@ def cprop(klass: Type, arg_1=5): # Class c-Sharp - like decorator of PRoperty Vo
         getattr(klass, get_func_name).attr_names = attr_names
 
         # set the function _del_cprop_attr as class method
-        setattr(klass, '_del_cprop_attr', _del_cprop_attr)
+        aname = '_del_cprop_attr'
+        if not delchecked:
+            delchecked = True
+            check_name(aname)
+            setattr(klass, aname, _del_cprop_attr)
     return klass
 
 
