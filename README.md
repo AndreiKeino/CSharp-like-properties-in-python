@@ -1,7 +1,7 @@
-# CSharp-like-properties-in-python
-properties in python that looks a bit like C# ones 
-to use this code copy the file cslike_props.py in your project
-examle of usage:
+# CSharp-like-properties-in-python.\
+Properties in python that looks a bit like C# ones.\
+To use this code copy the file cslike_props.py in your project.\
+examle of usage:\
 
 ```python
 from cslike_props import cprop, pprop
