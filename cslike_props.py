@@ -95,7 +95,7 @@ def cprop(klass: Type, arg_1=5): # Class c-Sharp - like decorator of PRoperty Vo
 
             banned = [k for k in all_inner_functions.keys() if k not in good_names]
             if len(banned) > 0:
-                raise ValueError((f'{k} property havs not acceptable item(s): {banned}, '
+                raise ValueError((f'{k} property has not acceptable item(s): {banned}, '
                                  f'acceptable items are: {good_names}'))
 
             if not good[0] in all_inner_functions.keys():
