@@ -154,9 +154,9 @@ def cprop(klass: Type, arg_1=5): # Class c-Sharp - like decorator of PRoperty Vo
         getattr(klass, get_func_name).attr_names = attr_names
 
         # set the function _del_cprop_attr as class method
-        aname = '_del_cprop_attr'
         if not delchecked:
             delchecked = True
+            aname = '_del_cprop_attr'
             check_name(aname)
             setattr(klass, aname, _del_cprop_attr)
     return klass
