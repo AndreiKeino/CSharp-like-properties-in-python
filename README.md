@@ -64,7 +64,7 @@ assert t._test_prop_one == a * 5
 assert t._test_prop_two == b * 5 ** 2
 
 assert t.test_prop_one == a * 5 * 5
-assert t.test_prop_two == b * 5 ** 4
+assert t.test_prop_two == b * 5 ** 2 * 5 ** 2
 
 
 attr_one_names = ['_test_prop_one', 'test_prop_one_get_v', 'test_prop_one_set_v', 'test_prop_one']
@@ -80,4 +80,5 @@ for a in attr_one_names:
     assert (not hasattr(TestClass, a))
 
 assert t.test_prop_two_get_v.attr_names == \
-       ['_test_prop_two', 'test_prop_two_get_v', 'test_prop_two_set_v', 'test_prop_two']```
+       ['_test_prop_two', 'test_prop_two_get_v', 'test_prop_two_set_v', 'test_prop_two']
+```
