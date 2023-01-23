@@ -29,10 +29,10 @@ class TestClass:
         # attribute name will be the same as the function name - test_prop_one
 
         def get_v(self):
-            return self._test_prop_one
+            return self._test_prop_one * 5
 
         def set_v(self, value):
-            self._test_prop_one = value
+            self._test_prop_one = value * 5
 
         def del_v(self):
             self._del_cprop_attr(self.test_prop_one_get_v.attr_names)
@@ -47,19 +47,25 @@ class TestClass:
         # attribute name will be the same as the function name - test_prop_two
 
         def get_v(self):
-            return self._test_prop_two
+            return self._test_prop_two * 5 ** 2
 
         def set_v(self, value):
-            self._test_prop_two = value
+            self._test_prop_two = value * 5 ** 2
 
 
 t = TestClass(test_prop_two=555, test_prop_one=55555)
-t.test_prop_one = 5 * 5
 
-t.test_prop_two = 5
+a = 25
+t.test_prop_one = a
+b = 5
+t.test_prop_two = b
 
-assert t.test_prop_two == 5
-assert t.test_prop_one == 5 * 5
+assert t._test_prop_one == a * 5
+assert t._test_prop_two == b * 5 ** 2
+
+assert t.test_prop_one == a * 5 * 5
+assert t.test_prop_two == b * 5 ** 4
+
 
 attr_one_names = ['_test_prop_one', 'test_prop_one_get_v', 'test_prop_one_set_v', 'test_prop_one']
 assert t.test_prop_one_get_v.attr_names == \
@@ -74,6 +80,4 @@ for a in attr_one_names:
     assert (not hasattr(TestClass, a))
 
 assert t.test_prop_two_get_v.attr_names == \
-       ['_test_prop_two', 'test_prop_two_get_v', 'test_prop_two_set_v', 'test_prop_two']
-
-```
+       ['_test_prop_two', 'test_prop_two_get_v', 'test_prop_two_set_v', 'test_prop_two']```
