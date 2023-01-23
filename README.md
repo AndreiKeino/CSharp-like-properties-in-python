@@ -8,6 +8,7 @@
 examle of usage:  
 
 ```python
+
 from cslike_props import cprop, pprop, _del_cprop_attr
 
 @cprop
@@ -63,6 +64,7 @@ class TestClass:
     def test_prop_py_delete(self):
         attrs = ['test_prop_py_get', 'test_prop_py_set', 'test_prop_py_delete']
         _del_cprop_attr(self, attrs)
+        del self._test_prop_py
 
     test_prop_py = property(test_prop_py_get, test_prop_py_set, test_prop_py_delete)
 
@@ -125,5 +127,7 @@ del t.test_prop_py
 
 for a in attr_py_names:
     assert not hasattr(TestClass, a)
+
+assert not hasattr(TestClass, '_test_prop_py')
 
 ```
