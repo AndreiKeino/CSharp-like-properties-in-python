@@ -72,7 +72,7 @@ assert t.test_prop_one_get_v.attr_names == \
        attr_one_names
 
 for a in attr_one_names:
-    assert hasattr(TestClass, a) #  or hasattr(t, a)
+    assert hasattr(TestClass, a) 
 
 del t.test_prop_one
 
@@ -81,4 +81,5 @@ for a in attr_one_names:
 
 assert t.test_prop_two_get_v.attr_names == \
        ['_test_prop_two', 'test_prop_two_get_v', 'test_prop_two_set_v', 'test_prop_two']
+       
 ```
