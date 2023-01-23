@@ -117,7 +117,6 @@ for a in attr_one_names:
 assert t.test_prop_two_get_v.attr_names == \
        ['_test_prop_two', 'test_prop_two_get_v', 'test_prop_two_set_v', 'test_prop_two']
 
-# attr_py_names = ['_test_prop_py', 'test_prop_py_get', 'test_prop_py_set', 'test_prop_py_delete']
 attr_py_names = ['test_prop_py_get', 'test_prop_py_set', 'test_prop_py_delete']
 
 for a in attr_py_names:
@@ -129,5 +128,6 @@ for a in attr_py_names:
     assert not hasattr(TestClass, a)
 
 assert not hasattr(TestClass, '_test_prop_py')
+
 
 ```
