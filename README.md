@@ -8,14 +8,17 @@
 examle of usage:  
 
 ```python
-from cslike_props import cprop, pprop
+from cslike_props import cprop, pprop, _del_cprop_attr
 
 @cprop
 class TestClass:
 
-    def __init__(self, test_prop_one, test_prop_two):
+    def __init__(self, test_prop_one, test_prop_py, test_prop_two):
         self.test_prop_one = test_prop_one
         self.test_prop_two = test_prop_two
+        # note that we can't assign here self.test_prop_py property
+        # but we can assign self.test_prop_one and self.test_prop_two properties
+        self._test_prop_py = test_prop_py
 
     def funct(self):
         print('in TestClass:funct')
@@ -26,14 +29,16 @@ class TestClass:
 
     @pprop
     def test_prop_one(self):
-        # attribute name will be the same as the function name - test_prop_one
-
+        # property name will be the same as the function name - test_prop_one
+        # the getter, underlying function name is test_prop_one_get_v
         def get_v(self):
             return self._test_prop_one * 5
 
+        # the setter, underlying function name is test_prop_one_set_v
         def set_v(self, value):
             self._test_prop_one = value * 5
 
+        # the deleter, underlying function name is test_prop_one_del_v
         def del_v(self):
             self._del_cprop_attr(self.test_prop_one_get_v.attr_names)
 
@@ -41,6 +46,28 @@ class TestClass:
         # ValueError: test_prop_one property should define no more than three inner functions
         # def delete2(self):
         #     pass
+
+    # example of pure pythonic property for comparison with
+    # example of the C# - like property test_prop_one property
+    # As it can be seen there is a bit more code than in the test_prop_one example,
+    # the code is a bit less readable than in the test_prop_one example and
+    # the property definition could be spread over the entire class
+    # without any consequences ->
+
+    def test_prop_py_get(self):
+        return self._test_prop_py * 5 ** 3
+
+    def test_prop_py_set(self, value):
+        self._test_prop_py = value * 5 ** 3
+
+    def test_prop_py_delete(self):
+        attrs = ['test_prop_py_get', 'test_prop_py_set', 'test_prop_py_delete']
+        _del_cprop_attr(self, attrs)
+
+    test_prop_py = property(test_prop_py_get, test_prop_py_set, test_prop_py_delete)
+
+    # <- example of pure pythonic property for comparison with
+    # example of the C# - like property test_prop_one property
 
     @pprop
     def test_prop_two(self):
@@ -52,8 +79,14 @@ class TestClass:
         def set_v(self, value):
             self._test_prop_two = value * 5 ** 2
 
+x, y, z = 555, 5, 55555
 
-t = TestClass(test_prop_two=555, test_prop_one=55555)
+
+t = TestClass(test_prop_one=x, test_prop_py=y, test_prop_two=z)
+
+assert t.test_prop_one == x * 5 ** 2
+assert t.test_prop_py == y * 5 ** 3
+assert t.test_prop_two == z * 5 ** 2 * 5 ** 2
 
 a = 25
 t.test_prop_one = a
@@ -72,14 +105,26 @@ assert t.test_prop_one_get_v.attr_names == \
        attr_one_names
 
 for a in attr_one_names:
-    assert hasattr(TestClass, a) 
+    assert hasattr(TestClass, a)
 
 del t.test_prop_one
 
 for a in attr_one_names:
-    assert (not hasattr(TestClass, a))
+    assert not hasattr(TestClass, a)
 
 assert t.test_prop_two_get_v.attr_names == \
        ['_test_prop_two', 'test_prop_two_get_v', 'test_prop_two_set_v', 'test_prop_two']
-       
+
+# attr_py_names = ['_test_prop_py', 'test_prop_py_get', 'test_prop_py_set', 'test_prop_py_delete']
+attr_py_names = ['test_prop_py_get', 'test_prop_py_set', 'test_prop_py_delete']
+
+for a in attr_py_names:
+    assert hasattr(TestClass, a)
+
+del t.test_prop_py
+
+for a in attr_py_names:
+    assert not hasattr(TestClass, a)
+
+
 ```
