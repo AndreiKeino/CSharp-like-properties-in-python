@@ -8,6 +8,7 @@
 examle of usage:  
 
 ```python
+
 from cslike_props import cprop, pprop, _del_cprop_attr
 
 @cprop
@@ -30,15 +31,15 @@ class TestClass:
     @pprop
     def test_prop_one(self):
         # property name will be the same as the function name - test_prop_one
-        # the getter, underlying function name is test_prop_one_get_v
+        # the getter declaration, underlying getter name is test_prop_one_get_v
         def get_v(self):
             return self._test_prop_one * 5
 
-        # the setter, underlying function name is test_prop_one_set_v
+        # the setter declaration, underlying setter name is test_prop_one_set_v
         def set_v(self, value):
             self._test_prop_one = value * 5
 
-        # the deleter, underlying function name is test_prop_one_del_v
+        # the deleter declaration, underlying deleter name is test_prop_one_del_v
         def del_v(self):
             self._del_cprop_attr(self.test_prop_one_get_v.attr_names)
 
@@ -49,10 +50,12 @@ class TestClass:
 
     # example of pure pythonic property for comparison with
     # example of the C# - like property test_prop_one property
-    # As it can be seen there is a bit more code than in the test_prop_one example,
-    # the code is a bit less readable than in the test_prop_one example and
-    # the property definition could be spread over the entire class
-    # without any consequences ->
+    # As it can be seen here is a bit more code than in the test_prop_one example,
+    # the functions in the property definition could be spread over the entire class
+    # without any consequences
+    # whereas the C# - like property requires
+    # all the functions in the property definition are nested inside
+    # property definition ->
 
     def test_prop_py_get(self):
         return self._test_prop_py * 5 ** 3
