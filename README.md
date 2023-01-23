@@ -8,7 +8,6 @@
 examle of usage:  
 
 ```python
-
 from cslike_props import cprop, pprop, _del_cprop_attr
 
 @cprop
@@ -17,9 +16,7 @@ class TestClass:
     def __init__(self, test_prop_one, test_prop_py, test_prop_two):
         self.test_prop_one = test_prop_one
         self.test_prop_two = test_prop_two
-        # note that we can't assign here self.test_prop_py property
-        # but we can assign self.test_prop_one and self.test_prop_two properties
-        self._test_prop_py = test_prop_py
+        self.test_prop_py = test_prop_py
 
     def funct(self):
         print('in TestClass:funct')
@@ -88,7 +85,7 @@ x, y, z = 555, 5, 55555
 t = TestClass(test_prop_one=x, test_prop_py=y, test_prop_two=z)
 
 assert t.test_prop_one == x * 5 ** 2
-assert t.test_prop_py == y * 5 ** 3
+assert t.test_prop_py == y * 5 ** 3 * 5 ** 3
 assert t.test_prop_two == z * 5 ** 2 * 5 ** 2
 
 a = 25
@@ -128,6 +125,5 @@ del t.test_prop_py
 
 for a in attr_py_names:
     assert not hasattr(TestClass, a)
-
 
 ```
