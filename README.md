@@ -6,6 +6,7 @@
 ### 2. Better code structuring.
 ## Cons:
 ### 1. The implementation can miss something that can be done with good old property declaration.
+### 2. A lot of things is made "behind the scene".
 
 ##### functions get_all_nested and free_var are borrowed from repository at https://github.com/sansyrox/nestd  
 ##### with many thanks to sansyrox 
