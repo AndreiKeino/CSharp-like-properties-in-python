@@ -1,6 +1,12 @@
 # CSharp-like-properties-in-python.  
 ### Properties in python that looks a bit like C# ones   
 ### These can be though of as an alternative implementation of the @property decorator.
+## Pros:
+### 1. A bit less of typing.
+### 2. Better code structuring.
+## Cons:
+### 1. The implementation can miss something that can be done with good old propertty declaration.
+
 ##### functions get_all_nested and free_var are borrowed from repository at https://github.com/sansyrox/nestd  
 ##### with many thanks to sansyrox 
    
