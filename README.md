@@ -38,7 +38,7 @@ class TestClass:
         # property name will be the same as the function name - test_prop_one
         # and the member variable _test_prop_one will be added to the class
         # and the list of all names of all the added attributes for the property
-        # will be added to a getter function test_prop_one_get_v as the atribute 
+        # will be added to a getter function test_prop_one_get_v as the attribute 
         # with the name attr_names
         
         # the getter declaration, underlying getter name is test_prop_one_get_v,
