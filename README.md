@@ -36,16 +36,22 @@ class TestClass:
     @pprop
     def test_prop_one(self):
         # property name will be the same as the function name - test_prop_one
-        # the getter declaration, underlying getter name is test_prop_one_get_v
+        # and the member variable _test_prop_one vill be added to the class
+        
+        # the getter declaration, underlying getter name is test_prop_one_get_v,
+        # the function test_prop_one_get_v will be added to a definition of this class
         def get_v(self):
             return self._test_prop_one * 5
 
         # the setter declaration, underlying setter name is test_prop_one_set_v
+        # the function test_prop_one_set_v will be added to a definition of this class
         def set_v(self, value):
             self._test_prop_one = value * 5
 
         # the deleter declaration, underlying deleter name is test_prop_one_del_v
+        # the function test_prop_one_del_v will be added to a definition of this class        
         def del_v(self):
+            # the function _del_cprop_attr will be added to a definition of this class
             self._del_cprop_attr(self.test_prop_one_get_v.attr_names)
 
         # if uncommented there will be
