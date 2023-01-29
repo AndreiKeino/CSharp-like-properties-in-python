@@ -4,6 +4,7 @@
 ## Pros:
 ### 1. A bit less of typing.
 ### 2. Better code structuring.
+### 3. More error-prone, as getter/setter/deleter names are predetermined. 
 ## Cons:
 ### 1. The implementation can miss something that can be done with good old property declaration.
 ### 2. A lot of things works "behind the scene", i.e. implicitly.
